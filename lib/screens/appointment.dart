@@ -4,7 +4,7 @@ import 'package:mental_wellness/screens/success_booked.dart';
 import '../utils/config.dart';
 
 class AppointmentPage extends StatefulWidget {
-  const AppointmentPage({Key? key}) : super(key: key);
+  const AppointmentPage({super.key});
 
   @override
   State<AppointmentPage> createState() => _AppointmentPageState();
@@ -135,10 +135,10 @@ class _AppointmentPageState extends State<AppointmentPage> {
                         ),
                         borderRadius: BorderRadius.circular(20)),
                     margin: !isLastElement
-                        ? EdgeInsets.only(bottom: 20)
+                        ? const EdgeInsets.only(bottom: 20)
                         : EdgeInsets.zero,
                     child: Padding(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -177,7 +177,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                           const SizedBox(
                             height: 5,
                           ),
-                          ScheduleCard(),
+                          const ScheduleCard(),
                           const SizedBox(
                             height: 15,
                           ),
@@ -190,17 +190,17 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AppointmentBooked();
+                                        return const AppointmentBooked();
                                       },
                                     ),
                                   );
                                 },
-                                child: Text(
+                                child: const Text(
                                   'Cancel',
                                   style: TextStyle(color: Config.primaryColor),
                                 ),
                               )),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -208,7 +208,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                 style: OutlinedButton.styleFrom(
                                     backgroundColor: Config.primaryColor),
                                 onPressed: () {},
-                                child: Text(
+                                child: const Text(
                                   'Reschedule',
                                   style: TextStyle(color: Colors.white),
                                 ),
@@ -230,7 +230,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
 }
 
 class ScheduleCard extends StatelessWidget {
-  const ScheduleCard({Key? key}) : super(key: key);
+  const ScheduleCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -238,8 +238,8 @@ class ScheduleCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.grey.shade200, borderRadius: BorderRadius.circular(10)),
       width: double.infinity,
-      padding: EdgeInsets.all(20),
-      child: Row(
+      padding: const EdgeInsets.all(20),
+      child: const Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

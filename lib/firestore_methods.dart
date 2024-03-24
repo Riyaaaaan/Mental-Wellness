@@ -13,7 +13,7 @@ class FirestoreMethods {
   static final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection('users');
 
-  // Function to add user details to Firestore
+  //* Function to add user details to Firestore
   static Future<void> addUserDetails({
     required String userId,
     required String email,
@@ -21,12 +21,12 @@ class FirestoreMethods {
     required String name,
   }) async {
     try {
+      final String userId = _uuid.v4();
       await _usersCollection.doc(userId).set({
         'userId': userId,
         'email': email,
         'username': username,
         'name': name,
-        'uuid': _uuid.v4(), // Generate a unique UUID for the user
       });
     } catch (e) {
       print('Error adding user details: $e');

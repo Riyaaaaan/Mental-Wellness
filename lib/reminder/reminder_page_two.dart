@@ -3,6 +3,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:mental_wellness/screens/dash_board.dart';
 import '../firestore_methods.dart'; // Adjust the import as necessary
 
 class ReminderPage extends StatefulWidget {
@@ -103,12 +104,13 @@ class _ReminderPageState extends State<ReminderPage> {
                     date: _selectedDate,
                     time: _selectedTime,
                   );
-                  Navigator.pop(
-                      context); // Optionally navigate back or show success message
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const DashBoardPage(),
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    minimumSize: Size(double.infinity, 48)),
+                    minimumSize: const Size(double.infinity, 48)),
                 child: const Text('Set Reminder'),
               ),
             ),

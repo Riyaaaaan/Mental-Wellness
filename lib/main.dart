@@ -19,8 +19,6 @@ Future main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UserProvider()),
-
-        // Add more providers here as needed
       ],
       child: MyApp(),
     ),

@@ -47,8 +47,8 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 20),
-                CircleAvatar(
-                  radius: 50,
+                const CircleAvatar(
+                  radius: 70,
                   backgroundImage: NetworkImage(
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
                   ),
@@ -64,8 +64,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 ListTile(
                   title: Text('Email: ${user.email}'),
-                  leading: Icon(Icons.email),
+                  leading: const Icon(Icons.email),
                 ),
+                 const Divider(),
                 ListTile(
                   title: const Text(
                     "Customer Support",
