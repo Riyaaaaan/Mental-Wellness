@@ -16,7 +16,7 @@ import '../provider/user_provider.dart';
 import '../reminder/relux.dart';
 
 class DashBoardPage extends StatefulWidget {
-  const DashBoardPage({Key? key}) : super(key: key);
+  const DashBoardPage({super.key});
 
   @override
   State<DashBoardPage> createState() => _DashBoardPageState();
@@ -245,7 +245,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return MoodTrackerPage();
+                        return const MoodTrackerPage();
                       },
                     ),
                   );

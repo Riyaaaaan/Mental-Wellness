@@ -14,8 +14,8 @@ class _PsycologistListState extends State<PsycologistList> {
       "image": Image.network(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
       ),
-      "name": "Dr.Deven Lane",
-      "position": "Psycologist",
+      "name": "Dr.Marc Saunders",
+      "position": "Psychologist",
       "hospital": "Square"
     },
     {
@@ -23,31 +23,31 @@ class _PsycologistListState extends State<PsycologistList> {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
       ),
       "name": "Dr.Samanta Lane",
-      "position": "Psycologist",
+      "position": "Psychologist",
       "hospital": "Square"
     },
     {
       "image": Image.network(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
       ),
-      "name": "Dr.Deven Lane",
-      "position": "Psycologist",
+      "name": "Dr.Sadie Gilbert",
+      "position": "Therapist",
       "hospital": "Square"
     },
     {
       "image": Image.network(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
       ),
-      "name": "Dr.Samanta Lane",
-      "position": "Psycologist",
+      "name": "Dr.Olga Dennis",
+      "position": "Psychiatrist",
       "hospital": "Square"
     },
     {
       "image": Image.network(
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
       ),
-      "name": "Dr.Deven Lane",
-      "position": "Psycologist",
+      "name": "Dr.Laura Daniels",
+      "position": "Counsellor",
       "hospital": "Square"
     },
     {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:mental_wellness/services/openai/chat_services.dart';
+import 'package:mental_wellness/utils/config.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class ChatScreen extends StatefulWidget {
@@ -123,7 +124,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.all(Config.widthSize! * 0.03),
               itemCount: messages.length,
               itemBuilder: (context, index) {
                 final message = messages[index];
@@ -132,13 +133,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
+                    margin: EdgeInsets.symmetric(
+                        vertical: Config.heightSize! * 0.01),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Config.widthSize! * 0.05,
+                        vertical: Config.heightSize! * 0.02),
                     decoration: BoxDecoration(
                       color:
                           message["isUser"] ? Colors.deepPurple : Colors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius:
+                          BorderRadius.circular(Config.widthSize! * 0.1),
                     ),
                     child: Text(
                       message["text"],
@@ -154,18 +158,19 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(Config.widthSize! * 0.05),
             child: Row(
               children: [
                 Expanded(
                   child: TextFormField(
                     controller: _messageController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: "Message",
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(Config.widthSize! * 0.03)),
                       ),
                     ),
                   ),

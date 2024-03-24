@@ -27,8 +27,8 @@ class _BookingPageState extends State<BookingPage> {
   Widget build(BuildContext context) {
     Config().init(context);
     return Scaffold(
-      appBar: CustomAppBar(
-        appTitle: 'Appoinment',
+      appBar: const CustomAppBar(
+        appTitle: 'Appointment',
         icon: FaIcon(Icons.arrow_back_ios),
       ),
       body: CustomScrollView(
@@ -38,13 +38,15 @@ class _BookingPageState extends State<BookingPage> {
               children: [
                 _tableCalendar(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Config.widthSize! * 0.02,
+                      vertical: Config.heightSize! * 0.05),
                   child: Center(
                     child: Text(
-                      "Select Counsiling Time",
+                      "Select Counseling Time",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: Config.widthSize! * 0.05,
                       ),
                     ),
                   ),
@@ -55,12 +57,14 @@ class _BookingPageState extends State<BookingPage> {
           _isWeekend
               ? SliverToBoxAdapter(
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Config.widthSize! * 0.02,
+                        vertical: Config.heightSize! * 0.04),
                     alignment: Alignment.center,
                     child: Text(
-                      "Weekend is not available,please select another Date",
+                      "Weekend is not available, please select another Date",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: Config.widthSize! * 0.045,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
                       ),
@@ -79,13 +83,14 @@ class _BookingPageState extends State<BookingPage> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.all(5),
+                          margin: EdgeInsets.all(Config.widthSize! * 0.01),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: _currentIndex == index
                                       ? Colors.white
                                       : Colors.black),
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(
+                                  Config.widthSize! * 0.05),
                               color: _currentIndex == index
                                   ? Config.primaryColor
                                   : null),
@@ -94,6 +99,7 @@ class _BookingPageState extends State<BookingPage> {
                             "${index + 9}:00${index + 9 > 11 ? "PM" : "AM"}",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: Config.widthSize! * 0.045,
                               color:
                                   _currentIndex == index ? Colors.white : null,
                             ),
@@ -104,14 +110,18 @@ class _BookingPageState extends State<BookingPage> {
                     childCount: 8,
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4, childAspectRatio: 1.5),
+                    crossAxisCount: 4,
+                    childAspectRatio: 1.5,
+                  ),
                 ),
           SliverToBoxAdapter(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
+              padding: EdgeInsets.symmetric(
+                  horizontal: Config.widthSize! * 0.02,
+                  vertical: Config.heightSize! * 0.1),
               child: Button(
                 width: double.infinity,
-                title: "Make Appoinment",
+                title: "Make Appointment",
                 onPress: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) {
@@ -135,10 +145,12 @@ class _BookingPageState extends State<BookingPage> {
       lastDay: DateTime(2024, 12, 31),
       calendarFormat: _formate,
       currentDay: _currentDay,
-      rowHeight: 48,
+      rowHeight: Config.heightSize! * 0.06,
       calendarStyle: const CalendarStyle(
-        todayDecoration:
-            BoxDecoration(color: Config.primaryColor, shape: BoxShape.circle),
+        todayDecoration: BoxDecoration(
+          color: Config.primaryColor,
+          shape: BoxShape.circle,
+        ),
       ),
       availableCalendarFormats: {CalendarFormat.month: "Month"},
       onFormatChanged: (format) {

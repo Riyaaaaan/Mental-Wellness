@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/appoint_card.dart';
 import '../components/doctor_card.dart';
 import '../utils/config.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     Config().init(context);
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 15,
         ),
@@ -60,11 +58,13 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Annie",
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox (
+                    const Spacer(),
+                    const SizedBox(
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage:
@@ -72,62 +72,27 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Config.spaceMedium,
-
                   ],
                 ),
-                Text(
-                  "Category",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
                 Config.spaceSmall,
-                SizedBox(
-                  height: Config.heightSize * 0.06,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: List<Widget>.generate(docList.length, (index) {
-                      return Card(
-                        margin: EdgeInsets.only(right: 20),
-                        color: Config.primaryColor,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              FaIcon(
-                                docList[index]['icon'],
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 10,),
-                              Text(docList[index]['category'],
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white
-                                ),)
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Config.spaceSmall,
-                Text(
+                const Text(
                   "Appointment Today",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Config.spaceSmall,
                 AppointCard(),
                 Config.spaceSmall,
-                Text(
+                const Text(
                   "Top Doctor",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Config.spaceSmall,
                 Column(
-                  children: List.generate(10, (index) => const DoctorCard(
-                    route: 'doc_details',
-                  )),
+                  children: List.generate(
+                      10,
+                      (index) => const DoctorCard(
+                            route: 'doc_details',
+                          )),
                 )
               ],
             ),

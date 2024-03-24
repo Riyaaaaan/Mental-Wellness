@@ -10,10 +10,11 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   myUser.User user = myUser.User(
-    imageUrl: 'https://via.placeholder.com/150',
-    username: 'JohnDoe',
-    mobileNumber: '+123456789',
-    email: 'johndoe@example.com',
+    imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
+    username: 'Paul Keller',
+    mobileNumber: '(733) 558-1844',
+    email: 'retlid@gmail.com',
   );
 
   bool isEditing = false;
