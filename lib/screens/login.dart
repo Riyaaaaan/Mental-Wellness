@@ -189,7 +189,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(30)),
                           ),
                           onPressed: _submit,
-                          child: const Text('Login'),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                       Row(

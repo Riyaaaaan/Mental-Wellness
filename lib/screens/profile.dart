@@ -1,46 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:mental_wellness/screens/support.dart';
-import '../models/user_model.dart' as myUser;
+import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mental_wellness/models/user.dart' as myUser;
+
+import '../provider/user_provider.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  myUser.User user = myUser.User(
-    imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-    username: 'Paul Keller',
-    mobileNumber: '(733) 558-1844',
-    email: 'retlid@gmail.com',
-  );
-
-  bool isEditing = false;
-
-  late TextEditingController _usernameController;
-  late TextEditingController _mobileNumberController;
-  late TextEditingController _emailController;
-
   @override
   void initState() {
     super.initState();
-    _usernameController = TextEditingController(text: user.username);
-    _mobileNumberController = TextEditingController(text: user.mobileNumber);
-    _emailController = TextEditingController(text: user.email);
+    addData();
   }
 
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _mobileNumberController.dispose();
-    _emailController.dispose();
-    super.dispose();
+  addData() async {
+    UserProvider _userProvider = Provider.of(context, listen: false);
+    await _userProvider.refreshUser();
   }
 
   @override
   Widget build(BuildContext context) {
+    myUser.User user = Provider.of<UserProvider>(context).user;
+    bool isEditing = false;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -51,27 +40,6 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         automaticallyImplyLeading: false,
         title: const Text('Profile Page'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(isEditing ? Icons.save : Icons.edit),
-            onPressed: () {
-              if (isEditing) {
-                // Save the changes
-                setState(() {
-                  user.username = _usernameController.text;
-                  user.mobileNumber = _mobileNumberController.text;
-                  user.email = _emailController.text;
-                  isEditing = false;
-                });
-              } else {
-                // Enable editing
-                setState(() {
-                  isEditing = true;
-                });
-              }
-            },
-          ),
-        ],
       ),
       body: ListView(
         children: <Widget>[
@@ -81,79 +49,58 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 20),
                 CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage(user.imageUrl),
+                  backgroundImage: NetworkImage(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
+                  ),
                 ),
                 const SizedBox(height: 20),
-                isEditing
-                    ? _editableField("Username", _usernameController)
-                    : _nonEditableField(
-                        "Username", user.username, Icons.person),
-                isEditing
-                    ? _editableField("Mobile Number", _mobileNumberController)
-                    : _nonEditableField(
-                        "Mobile Number", user.mobileNumber, Icons.phone),
-                isEditing
-                    ? _editableField("Email", _emailController)
-                    : _nonEditableField("Email", user.email, Icons.email),
-                _customerSupportSection(),
-                _signOutSection(),
+                ListTile(
+                  title: Text('Name: ${user.name}'),
+                  leading: const Icon(Icons.person),
+                ),
+                ListTile(
+                  title: Text('Username: ${user.username}'),
+                  leading: const Icon(Icons.person),
+                ),
+                ListTile(
+                  title: Text('Email: ${user.email}'),
+                  leading: Icon(Icons.email),
+                ),
+                ListTile(
+                  title: const Text(
+                    "Customer Support",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  leading: const Icon(Icons.headset_mic),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SupportPage()),
+                    );
+                  },
+                  enabled:
+                      !isEditing, // Disables the customer support tile during editing mode
+                ),
+                ListTile(
+                  title: const Text(
+                    "Sign Out",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  leading: const Icon(Icons.logout),
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut();
+                    await Future.delayed(const Duration(seconds: 1));
+                    Navigator.of(context).pop();
+                  },
+                  enabled:
+                      !isEditing, // Disables the sign out tile during editing mode
+                ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _nonEditableField(String label, String value, IconData icon) {
-    return ListTile(
-      title: Text(value),
-      leading: Icon(icon),
-    );
-  }
-
-  Widget _editableField(String label, TextEditingController controller) {
-    return ListTile(
-      title: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-        ),
-      ),
-    );
-  }
-
-  Widget _customerSupportSection() {
-    return ListTile(
-      title: const Text(
-        "Customer Support",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      leading: const Icon(Icons.headset_mic),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const SupportPage()),
-        );
-      },
-      enabled:
-          !isEditing, // Disables the customer support tile during editing mode
-    );
-  }
-
-  Widget _signOutSection() {
-    return ListTile(
-      title: const Text(
-        "Sign Out",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      leading: const Icon(Icons.logout),
-      onTap: () async {
-        FirebaseAuth.instance.signOut();
-        await Future.delayed(const Duration(seconds: 1));
-        Navigator.of(context).pop();
-      },
-      enabled: !isEditing, // Disables the sign out tile during editing mode
     );
   }
 }

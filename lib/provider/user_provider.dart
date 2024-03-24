@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:mental_wellness/models/user_model.dart';
+import 'package:mental_wellness/auth_methods.dart';
+import 'package:mental_wellness/models/user.dart' as myUser;
 
-class UserProvider with ChangeNotifier {
-  User _user = User(
-    imageUrl: 'https://via.placeholder.com/150',
-    username: 'JohnDoe',
-    mobileNumber: '+123456789',
-    email: 'johndoe@example.com',
-  );
+class UserProvider extends ChangeNotifier {
+  myUser.User? _user; // Updated: Change the type to nullable User
+  final AuthMethod _authMethod = AuthMethod();
 
-  User get user => _user;
+  // Getter to access the user data
+  myUser.User get user =>
+      _user ??
+      myUser.User(
+        email: '',
+        username: '',
+        name: '', // Provide default values for name and userId
+        userId: '',
+      );
 
-  void updateUser(String username, String mobileNumber, String email) {
-    _user.username = username;
-    _user.mobileNumber = mobileNumber;
-    _user.email = email;
+  // Method to refresh user data
+  Future<void> refreshUser() async {
+    myUser.User? user = await _authMethod.getUserDetails();
+    _user = user;
     notifyListeners();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mental_wellness/main.dart';
+import 'package:mental_wellness/auth_methods.dart';
 
 import 'login.dart';
 
@@ -16,6 +16,8 @@ class _SignupPageState extends State<SignupPage> {
   late String _email, _password, name;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   bool _showPassword = false;
   void _togglevisibility() {
@@ -78,11 +80,12 @@ class _SignupPageState extends State<SignupPage> {
                         TextFormField(
                           validator: (input) {
                             if (input != null) {
-                              return 'Provide an name';
+                              return 'Provide a name';
                             }
                             return null;
                           },
                           onSaved: (input) => name = input!,
+                          controller: _nameController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -108,10 +111,12 @@ class _SignupPageState extends State<SignupPage> {
                         TextFormField(
                           validator: (input) {
                             if (input != null) {
-                              return 'Provide an name';
+                              return 'Provide a username';
                             }
+                            return null;
                           },
                           onSaved: (input) => name = input!,
+                          controller: _usernameController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -171,6 +176,7 @@ class _SignupPageState extends State<SignupPage> {
                             if (input!.length < 6) {
                               return 'Longer password please';
                             }
+                            return null;
                           },
                           controller: _passwordController,
                           onSaved: (input) => _password = input!,
@@ -214,12 +220,15 @@ class _SignupPageState extends State<SignupPage> {
                           height: 50,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xff6474FB),
+                              backgroundColor: const Color(0xff6474FB),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
                             ),
                             onPressed: _submit,
-                            child: const Text('SignUp'),
+                            child: const Text(
+                              'SignUp',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -255,25 +264,32 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  Future _submit() async {
+  Future<void> _submit() async {
     showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ));
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
     try {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
         // Navigator.push(context, MaterialPageRoute(builder:(context)=>const Dashboard()));
       }
 
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
+      // await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      //     email: _emailController.text.trim(),
+      //     password: _passwordController.text.trim());
+      await AuthMethod().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _usernameController.text,
+        name: _nameController.text,
+      );
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    Navigator.popUntil(context, (route) => route.isFirst);
   }
 }

@@ -10,7 +10,6 @@ import 'package:mental_wellness/screens/mood_page.dart';
 import 'package:mental_wellness/screens/notifications.dart';
 import 'package:mental_wellness/screens/phsycologist_list.dart';
 import 'package:mental_wellness/screens/profile.dart';
-
 import 'package:provider/provider.dart';
 import '../provider/user_provider.dart';
 import '../reminder/relux.dart';
@@ -23,6 +22,17 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class _DashBoardPageState extends State<DashBoardPage> {
+  @override
+  void initState() {
+    super.initState();
+    addData();
+  }
+
+  addData() async {
+    UserProvider _userProvider = Provider.of(context, listen: false);
+    await _userProvider.refreshUser();
+  }
+
   List<Map<String, dynamic>> docList = [
     {
       "image": Image.asset("assets/Rectangle 5201 (1).png"),
@@ -54,7 +64,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => const HomePage(),
                   ),
                 );
               },
@@ -97,7 +107,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => ProfilePage(),
+                    builder: (context) => const ProfilePage(),
                   ),
                 );
               },
