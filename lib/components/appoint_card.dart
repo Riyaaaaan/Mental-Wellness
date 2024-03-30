@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../utils/config.dart';
@@ -60,19 +59,21 @@ class _AppointCardState extends State<AppointCard> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                        style:
-                            ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red),
                         onPressed: () {},
                         child: Text(
                           'Cancel',
                           style: TextStyle(color: Colors.white),
                         )),
                   ),
-                  SizedBox(width: 20,),
+                  SizedBox(
+                    width: 20,
+                  ),
                   Expanded(
                     child: ElevatedButton(
-                        style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue),
                         onPressed: () {},
                         child: Text(
                           'Completed',
