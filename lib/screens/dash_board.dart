@@ -132,7 +132,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Hey ${user.username}",
+                      "Hey ${user.username} !",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: screenWidth * 0.07,
@@ -153,7 +153,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 Text(
-                  "We are here to help you",
+                  "We are here for you",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: screenWidth * 0.04,

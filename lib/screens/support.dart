@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Add url_launcher package to your pubspec.yaml
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SupportPage extends StatelessWidget {
-  const SupportPage({super.key});
+  const SupportPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,11 @@ class SupportPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           ListTile(
-            leading: const Icon(Icons.question_answer),
-            title: Text('FAQs'),
+            leading: Icon(Icons.phone),
+            title: Text('Emergency Contact'),
+            subtitle: Text('Immediate assistance'),
             onTap: () {
-              // Navigate to FAQs page or display FAQs dialog
+              launchPhoneCall();
             },
           ),
           ListTile(
@@ -25,17 +27,14 @@ class SupportPage extends StatelessWidget {
             title: Text('Contact Support'),
             subtitle: Text('Get in touch with our support team'),
             onTap: () {
-              // Launch mail app or navigate to contact form
               launchMailApp();
             },
           ),
           ListTile(
-            leading: Icon(Icons.warning),
-            title: Text('Emergency Contacts'),
-            subtitle: Text('Immediate assistance'),
+            leading: const Icon(Icons.question_answer),
+            title: Text('FAQs'),
             onTap: () {
-              // Display emergency contact numbers or navigate to a page with more details
-              showEmergencyContacts(context);
+              sendSMS();
             },
           ),
         ],
@@ -47,20 +46,39 @@ class SupportPage extends StatelessWidget {
     final Uri params = Uri(
       scheme: 'mailto',
       path: 'support@example.com',
-      query:
-          'subject=Support Request&body=Description of the issue', //add subject and body here
+      query: 'subject=Support Request&body=Description of the issue',
     );
 
     var url = params.toString();
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
     } else {
       print('Could not launch $url');
     }
   }
 
-  void showEmergencyContacts(BuildContext context) {
-    // Implement your method to show emergency contacts
-    // This could open a dialog or a new screen with the contact details
+  void launchPhoneCall() async {
+    final phoneNumber = '+91 1800-599-0019';
+
+    final Uri params = Uri(scheme: 'tel', path: phoneNumber);
+
+    var url = params.toString();
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      print('Could not launch $url');
+    }
+  }
+
+  void sendSMS() async {
+    final phoneNumber = '112';
+    final Uri params = Uri(scheme: 'sms', path: phoneNumber);
+
+    var url = params.toString();
+    if (await launchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      print('Could not send SMS to $phoneNumber');
+    }
   }
 }

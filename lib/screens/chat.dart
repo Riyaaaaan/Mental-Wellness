@@ -94,6 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Config().init(context);
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(

@@ -28,7 +28,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     myUser.User user = Provider.of<UserProvider>(context).user;
-    bool isEditing = false;
 
     return Scaffold(
       appBar: AppBar(
@@ -55,15 +54,24 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 20),
                 ListTile(
-                  title: Text('Name: ${user.name}'),
+                  title: Text(
+                    'Name: ${user.name}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  leading: const Icon(Icons.person_pin),
+                ),
+                ListTile(
+                  title: Text(
+                    'Username: ${user.username}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   leading: const Icon(Icons.person),
                 ),
                 ListTile(
-                  title: Text('Username: ${user.username}'),
-                  leading: const Icon(Icons.person),
-                ),
-                ListTile(
-                  title: Text('Email: ${user.email}'),
+                  title: Text(
+                    'Email: ${user.email}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   leading: const Icon(Icons.email),
                 ),
                 const Divider(),
@@ -80,8 +88,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           builder: (context) => const SupportPage()),
                     );
                   },
-                  enabled:
-                      !isEditing, // Disables the customer support tile during editing mode
                 ),
                 ListTile(
                   title: const Text(
@@ -94,8 +100,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     await Future.delayed(const Duration(seconds: 1));
                     Navigator.of(context).pop();
                   },
-                  enabled:
-                      !isEditing, // Disables the sign out tile during editing mode
                 ),
               ],
             ),
