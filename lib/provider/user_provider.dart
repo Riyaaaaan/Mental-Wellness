@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mental_wellness/auth_methods.dart';
 import 'package:mental_wellness/models/user.dart' as myUser;

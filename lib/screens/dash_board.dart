@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mental_wellness/models/user.dart' as myUser;
 import 'package:mental_wellness/reminder/reminder_page_one.dart';
 import 'package:mental_wellness/screens/booking_page.dart';
 import 'package:mental_wellness/screens/chat.dart';
@@ -29,7 +30,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
   }
 
   addData() async {
-    UserProvider _userProvider = Provider.of(context, listen: false);
+    UserProvider _userProvider =
+        Provider.of<UserProvider>(context, listen: false);
     await _userProvider.refreshUser();
   }
 
@@ -49,7 +51,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    final myUser.User user = userProvider.user;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -129,7 +132,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Hey ${userProvider.user.username}",
+                      "Hey ${user.username}",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: screenWidth * 0.07,

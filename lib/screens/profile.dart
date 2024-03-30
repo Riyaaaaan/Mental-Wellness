@@ -66,7 +66,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   title: Text('Email: ${user.email}'),
                   leading: const Icon(Icons.email),
                 ),
-                 const Divider(),
+                const Divider(),
                 ListTile(
                   title: const Text(
                     "Customer Support",
