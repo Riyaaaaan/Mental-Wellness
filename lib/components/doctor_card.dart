@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 
 import '../utils/config.dart';
 
 class DoctorCard extends StatelessWidget {
-  const DoctorCard({Key? key,required this.route}) : super(key: key);
+  const DoctorCard({Key? key, required this.route}) : super(key: key);
 
-final String route;
+  final String route;
   @override
   Widget build(BuildContext context) {
     Config().init(context);
@@ -38,7 +37,7 @@ final String route;
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Dental",
+                      "Therapist",
                       style: TextStyle(
                           fontSize: 14, fontWeight: FontWeight.normal),
                     ),
@@ -74,7 +73,7 @@ final String route;
             ],
           ),
         ),
-        onTap: (){
+        onTap: () {
           Navigator.of(context).pushNamed(route);
         },
       ),

@@ -47,8 +47,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
       return _schedule['status'] == status;
     }).toList();
     return Scaffold(
-      // Changed from SafeArea to Scaffold for background
-      backgroundColor: Colors.grey.shade100, // Setting background color
+      backgroundColor: Colors.grey.shade100,
       body: Padding(
         padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
         child: Column(

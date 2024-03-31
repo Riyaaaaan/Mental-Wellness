@@ -41,5 +41,5 @@ class Config {
         Radius.circular(8),
       ),
       borderSide: BorderSide(color: Colors.red));
-  static const primaryColor = Colors.greenAccent;
+  static const primaryColor = Colors.lightBlue;
 }

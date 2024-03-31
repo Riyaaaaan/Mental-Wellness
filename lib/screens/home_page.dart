@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                 AppointCard(),
                 Config.spaceSmall,
                 Text(
-                  "Top Doctor",
+                  "Top Doctors",
                   style: TextStyle(
                     fontSize: Config.widthSize! * 0.04,
                     fontWeight: FontWeight.bold,
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                 Config.spaceSmall,
                 Column(
                   children: List.generate(
-                    10,
+                    5,
                     (index) => const DoctorCard(
                       route: 'doc_details',
                     ),
