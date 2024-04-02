@@ -16,7 +16,7 @@ class SupportPage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.phone),
             title: Text('Emergency Contact'),
-            subtitle: Text('Immediate assistance'),
+            subtitle: Text('Tap to call'),
             onTap: () {
               launchPhoneCall();
             },
