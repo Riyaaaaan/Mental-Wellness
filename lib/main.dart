@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mental_wellness/api/firebase_api.dart';
 import 'package:mental_wellness/firebase_options.dart';
 import 'package:mental_wellness/provider/user_provider.dart';
 import 'package:mental_wellness/screens/dash_board.dart';
 import 'package:mental_wellness/screens/login.dart';
+import 'package:mental_wellness/screens/notifications.dart';
 import 'package:mental_wellness/screens/sign_up.dart';
 import 'package:mental_wellness/screens/welcome_page.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +17,7 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotifications();
   runApp(
     MultiProvider(
       providers: [
@@ -41,6 +44,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: const WelcomePage(),
+      routes: {
+        '/notificationsScreen': (context) => NotificationPage(),
+      },
     );
   }
 }

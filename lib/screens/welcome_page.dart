@@ -58,7 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const OnboardingPage()));
