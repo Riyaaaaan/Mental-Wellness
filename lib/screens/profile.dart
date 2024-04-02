@@ -44,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         automaticallyImplyLeading: false,
-        title: const Text('Profile Page'),
+        title: const Text('My Profile '),
       ),
       body: ListView(
         children: <Widget>[
@@ -69,14 +69,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 20),
                 ListTile(
                   title: Text(
-                    'Name : ${user.name}',
+                    'Name :   ${user.name}',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  leading: const Icon(Icons.person_pin),
+                  leading: const Icon(Icons.person),
                 ),
                 ListTile(
                   title: Text(
-                    'Username : ${user.username}',
+                    'Username :   ${user.username}',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   leading: const Icon(Icons.person),
