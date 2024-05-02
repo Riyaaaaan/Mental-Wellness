@@ -1,6 +1,6 @@
 # Mental_wellness
 
-A new Flutter project.
+Flutter Firebase Project.
 
 ## Getting Started
 
