@@ -3,8 +3,8 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:intl/intl.dart' show DateFormat;
-import 'package:mental_wellness/screens/dash_board.dart';
-import '../firestore_methods.dart'; // Adjust the import as necessary
+import 'package:mental_wellness/screens/dashboard/dash_board.dart';
+import '../firebase/firestore_methods.dart'; // Adjust the import as necessary
 
 class ReminderPage extends StatefulWidget {
   final String title;

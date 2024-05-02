@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mental_wellness/screens/dash_board.dart';
+import 'package:mental_wellness/screens/dashboard/dash_board.dart';
 
 import '../components/button.dart';
 

@@ -4,9 +4,9 @@ import 'package:mental_wellness/models/user.dart' as myUser;
 import 'package:mental_wellness/provider/user_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../components/appoint_card.dart';
-import '../components/doctor_card.dart';
-import '../utils/config.dart';
+import '../../components/appoint_card.dart';
+import '../../components/doctor_card.dart';
+import '../../utils/config.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mental_wellness/auth_methods.dart';
+import 'package:mental_wellness/firebase/auth_methods.dart';
 import 'package:mental_wellness/models/user.dart' as myUser;
 
 class UserProvider extends ChangeNotifier {

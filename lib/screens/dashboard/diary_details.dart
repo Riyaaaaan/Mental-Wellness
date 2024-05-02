@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import '../firestore_methods.dart';
+import '../../firebase/firestore_methods.dart';
 
 class DiaryEntryDetails extends StatefulWidget {
   final Map<String, dynamic> diaryEntry;

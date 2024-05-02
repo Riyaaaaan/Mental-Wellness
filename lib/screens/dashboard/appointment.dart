@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mental_wellness/screens/success_booked.dart';
 
-import '../utils/config.dart';
+import '../../utils/config.dart';
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({super.key});

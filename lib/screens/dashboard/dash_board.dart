@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mental_wellness/models/user.dart' as myUser;
 import 'package:mental_wellness/reminder/reminder_page_one.dart';
-import 'package:mental_wellness/screens/booking_page.dart';
-import 'package:mental_wellness/screens/chat.dart';
-import 'package:mental_wellness/screens/diary.dart';
-import 'package:mental_wellness/screens/home_page.dart';
-import 'package:mental_wellness/screens/mood_page.dart';
-import 'package:mental_wellness/screens/notifications.dart';
-import 'package:mental_wellness/screens/phsycologist_list.dart';
-import 'package:mental_wellness/screens/profile.dart';
+import 'package:mental_wellness/screens/dashboard/booking_page.dart';
+import 'package:mental_wellness/screens/dashboard/chat.dart';
+import 'package:mental_wellness/screens/dashboard/diary.dart';
+import 'package:mental_wellness/screens/dashboard/home_page.dart';
+import 'package:mental_wellness/screens/dashboard/mood_page.dart';
+import 'package:mental_wellness/screens/dashboard/notifications.dart';
+import 'package:mental_wellness/screens/dashboard/phsycologist_list.dart';
+import 'package:mental_wellness/screens/dashboard/profile.dart';
 import 'package:provider/provider.dart';
-import '../provider/user_provider.dart';
-import '../reminder/relux.dart';
+import '../../provider/user_provider.dart';
+import '../../reminder/relux.dart';
 
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({super.key});

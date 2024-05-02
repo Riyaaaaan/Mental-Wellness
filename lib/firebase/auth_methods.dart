@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mental_wellness/firestore_methods.dart';
+import 'package:mental_wellness/firebase/firestore_methods.dart';
 import 'package:mental_wellness/models/user.dart' as model;
 
 class AuthMethod {

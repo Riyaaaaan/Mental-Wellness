@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mental_wellness/screens/appointment.dart';
+import 'package:mental_wellness/screens/dashboard/appointment.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../components/button.dart';
-import '../components/custom_appbar.dart';
-import '../utils/config.dart';
+import '../../components/button.dart';
+import '../../components/custom_appbar.dart';
+import '../../utils/config.dart';
 
 class BookingPage extends StatefulWidget {
   const BookingPage({Key? key}) : super(key: key);

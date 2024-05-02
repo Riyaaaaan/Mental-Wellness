@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../firestore_methods.dart';
+import '../../firebase/firestore_methods.dart';
 import 'diary_details.dart';
 
 class DiaryPage extends StatefulWidget {

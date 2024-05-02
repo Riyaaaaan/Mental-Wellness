@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mental_wellness/screens/booking_page.dart';
-import '../components/button.dart';
-import '../components/custom_appbar.dart';
-import '../utils/config.dart';
+import 'package:mental_wellness/screens/dashboard/booking_page.dart';
+import '../../components/button.dart';
+import '../../components/custom_appbar.dart';
+import '../../utils/config.dart';
 
 class DoctorDetails extends StatefulWidget {
   const DoctorDetails({Key? key}) : super(key: key);

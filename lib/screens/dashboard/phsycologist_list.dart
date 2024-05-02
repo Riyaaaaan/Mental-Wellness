@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mental_wellness/screens/doctor_details.dart';
+import 'package:mental_wellness/screens/dashboard/doctor_details.dart';
 
 class PsycologistList extends StatefulWidget {
   const PsycologistList({Key? key}) : super(key: key);

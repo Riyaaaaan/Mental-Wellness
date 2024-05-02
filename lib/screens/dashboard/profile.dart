@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mental_wellness/models/user.dart' as myUser;
 
-import '../provider/user_provider.dart';
-import '../utils/config.dart';
+import '../../provider/user_provider.dart';
+import '../../utils/config.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key});
