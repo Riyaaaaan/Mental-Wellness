@@ -1,14 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mental_wellness/api/firebase_api.dart';
 import 'package:mental_wellness/firebase_options.dart';
+import 'package:mental_wellness/models/user.dart' as myUser;
 import 'package:mental_wellness/provider/user_provider.dart';
 import 'package:mental_wellness/screens/dashboard/dash_board.dart';
 import 'package:mental_wellness/screens/login.dart';
 import 'package:mental_wellness/screens/dashboard/notifications.dart';
 import 'package:mental_wellness/screens/sign_up.dart';
 import 'package:mental_wellness/screens/welcome_page.dart';
+import 'package:mental_wellness/utils/local_noti.dart';
 import 'package:provider/provider.dart';
 
 Future main() async {
@@ -16,7 +19,8 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseApi().initNotifications();
+  // await FirebaseApi().initNotifications();
+  await LocalNotificationService().init();
   runApp(
     MultiProvider(
       providers: [
@@ -32,7 +36,6 @@ final navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const WelcomePage(),
       routes: {
-        '/notificationsScreen': (context) => NotificationPage(),
+        '/notifications': (context) => NotificationPage(),
       },
     );
   }
@@ -65,10 +68,13 @@ class MainPage extends StatelessWidget {
             } else if (snapshot.hasError) {
               return const Center(child: Text('Something went wrong!'));
             } else if (snapshot.hasData) {
-              print('Successful');
+              log('Successful');
+              LocalNotificationService()
+                  .showNotificationAndroid('Happify', 'Welcome to Happify');
+
               return const DashBoardPage();
             } else {
-              print('Failed');
+              log('Failed');
 
               return const AuthPage();
             }

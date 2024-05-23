@@ -15,8 +15,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const MainPage()));
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MainPage(),
+            ),
+          );
         },
         backgroundColor: Colors.white,
         child: const Icon(

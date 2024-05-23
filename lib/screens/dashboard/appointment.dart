@@ -185,15 +185,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             children: [
                               Expanded(
                                   child: OutlinedButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return const AppointmentBooked();
-                                      },
-                                    ),
-                                  );
-                                },
+                                onPressed: () {},
                                 child: const Text(
                                   'Cancel',
                                   style: TextStyle(color: Config.primaryColor),
@@ -206,7 +198,15 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                   child: OutlinedButton(
                                 style: OutlinedButton.styleFrom(
                                     backgroundColor: Config.primaryColor),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const AppointmentBooked();
+                                      },
+                                    ),
+                                  );
+                                },
                                 child: const Text(
                                   'Reschedule',
                                   style: TextStyle(color: Colors.white),

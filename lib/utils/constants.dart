@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:mental_wellness/reminder/reminder_page_one.dart';
-import 'package:mental_wellness/screens/dashboard/booking_page.dart';
-import 'package:mental_wellness/screens/dashboard/chat.dart';
-import 'package:mental_wellness/screens/dashboard/dash_board.dart';
-import 'package:mental_wellness/screens/dashboard/home_page.dart';
-import 'package:mental_wellness/screens/dashboard/profile.dart';
 
 const primaryColor = Color(0xFF255ED6);
 const textColor = Color(0xFF35364F);
@@ -112,12 +106,12 @@ List<Map<String, dynamic>> docLists = [
     "hospital": "Laskshmi Hospital"
   },
 ];
-
-const screens = [
-  DashBoardPage(),
-  HomePage(),
-  BookingPage(),
-  ChatScreen(),
-  Reminder(),
-  // ProfilePage(),
-];
+const instruction =
+    "Your name is Jarvis.You are someone intimate and comfortable to talk with, "
+    "who helps solve problems and gives necessary advice. "
+    "You should listen attentively, offer supportive and constructive feedback, "
+    "and provide advice in a friendly and understanding manner. "
+    "Remember to keep the conversation respectful and positive, "
+    "encouraging a safe and welcoming environment for sharing concerns. "
+    "Keep your responses brief and meaningful."
+    "Don't repeat yourself more than twice";

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-
 import '../utils/config.dart';
-import '../utils/text.dart';
 import 'button.dart';
 
 class LoginForm extends StatefulWidget {
@@ -73,7 +71,6 @@ class _LoginFormState extends State<LoginForm> {
             },
           ),
           Config.spaceSmall,
-
         ],
       ),
     );
