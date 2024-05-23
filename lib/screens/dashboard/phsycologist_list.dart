@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_wellness/screens/dashboard/doctor_details.dart';
+import 'package:mental_wellness/utils/constants.dart';
 
 class PsycologistList extends StatefulWidget {
   const PsycologistList({Key? key}) : super(key: key);
@@ -9,72 +10,6 @@ class PsycologistList extends StatefulWidget {
 }
 
 class _PsycologistListState extends State<PsycologistList> {
-  List<Map<String, dynamic>> docList = [
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Marc Saunders",
-      "position": "Psychologist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Samanta Lane",
-      "position": "Psychologist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Sadie Gilbert",
-      "position": "Therapist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Olga Dennis",
-      "position": "Psychiatrist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Laura Daniels",
-      "position": "Counsellor",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Samanta Lane",
-      "position": "Psycologist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Deven Lane",
-      "position": "Psycologist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IPj8bOq0BhZcQaOzwLEuiyiW0FiMSKDl7eUOS8tj4nhuAjujoO7mIoxdlw&s",
-      ),
-      "name": "Dr.Samanta Lane",
-      "position": "Psycologist",
-      "hospital": "Square"
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,29 +51,32 @@ class _PsycologistListState extends State<PsycologistList> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         docList[index]['image'],
                         const SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              docList[index]['name'],
-                              style: const TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            ),
-                            Text(docList[index]['position']),
-                            Text(
-                              docList[index]['hospital'],
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.blue),
-                            )
-                          ],
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                docList[index]['name'],
+                                style: const TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                              Text(docList[index]['position']),
+                              Text(
+                                docList[index]['hospital'],
+                                style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.blue),
+                              )
+                            ],
+                          ),
                         )
                       ],
                     ),

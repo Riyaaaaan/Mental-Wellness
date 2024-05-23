@@ -11,6 +11,7 @@ import 'package:mental_wellness/screens/dashboard/mood_page.dart';
 import 'package:mental_wellness/screens/dashboard/notifications.dart';
 import 'package:mental_wellness/screens/dashboard/phsycologist_list.dart';
 import 'package:mental_wellness/screens/dashboard/profile.dart';
+import 'package:mental_wellness/utils/constants.dart';
 import 'package:provider/provider.dart';
 import '../../provider/user_provider.dart';
 import '../../reminder/relux.dart';
@@ -35,20 +36,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
     await _userProvider.refreshUser();
   }
 
-  List<Map<String, dynamic>> docList = [
-    {
-      "image": Image.asset("assets/Rectangle 5201 (1).png"),
-      "name": "Dr.Samanta Lane",
-      "position": "Psychologist",
-      "hospital": "Square"
-    },
-    {
-      "image": Image.asset("assets/Rectangle 5201.png"),
-      "name": "Dr.Deven Lane",
-      "position": "Psychologist",
-      "hospital": "Square"
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
@@ -349,37 +336,40 @@ class _DashBoardPageState extends State<DashBoardPage> {
     return SizedBox(
         height: screenHeight * 0.4,
         child: ListView(
+          shrinkWrap: true,
           scrollDirection: Axis.vertical,
-          children: List<Widget>.generate(docList.length, (index) {
+          children: List<Widget>.generate(docLists.length, (index) {
             return Card(
               margin: EdgeInsets.symmetric(
                   vertical: screenHeight * 0.01,
                   horizontal: screenHeight * 0.01),
               child: Row(
                 children: [
-                  docList[index]['image'],
+                  docLists[index]['image'],
                   SizedBox(
                     width: screenWidth * 0.05,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        docList[index]['name'],
-                        style: TextStyle(
-                            fontSize: screenWidth * 0.07,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(docList[index]['position']),
-                      Text(
-                        docList[index]['hospital'],
-                        style: TextStyle(
-                            fontSize: screenWidth * 0.03,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.blue),
-                      )
-                    ],
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          docLists[index]['name'],
+                          style: TextStyle(
+                              fontSize: screenWidth * 0.07,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(docLists[index]['position']),
+                        Text(
+                          docLists[index]['hospital'],
+                          style: TextStyle(
+                              fontSize: screenWidth * 0.03,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.blue),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),

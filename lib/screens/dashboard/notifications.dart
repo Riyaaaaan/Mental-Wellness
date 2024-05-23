@@ -20,7 +20,7 @@ class NotificationPage extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios),
           ),
-          title: Text('Error'),
+          title: Text('Notifications'),
         ),
         body: Center(
           child: Text('No notification data available.'),

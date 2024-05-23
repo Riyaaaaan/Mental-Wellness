@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../firebase/firestore_methods.dart';
 import 'diary_details.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Import FirebaseAuth to get current user
 
 class DiaryPage extends StatefulWidget {
   const DiaryPage({Key? key}) : super(key: key);
@@ -13,11 +14,13 @@ class DiaryPage extends StatefulWidget {
 class _DiaryPageState extends State<DiaryPage> {
   final TextEditingController _diaryController = TextEditingController();
   late List<Map<String, dynamic>> _diaryEntries; // List to store diary entries
+  late String _userId; // Variable to store user ID
 
   @override
   void initState() {
     super.initState();
     _diaryEntries = <Map<String, dynamic>>[]; // Initialize diary entries list
+    _userId = FirebaseAuth.instance.currentUser!.uid; // Get current user ID
     _fetchDiaryEntries(); // Fetch diary entries from Firestore
   }
 
@@ -28,10 +31,10 @@ class _DiaryPageState extends State<DiaryPage> {
   }
 
   Future<void> _addDiaryEntry() async {
-    //Hide the keyboard
+    // Hide the keyboard
     FocusScope.of(context).unfocus();
     try {
-      await FirestoreMethods.addDiaryEntry(_diaryController.text);
+      await FirestoreMethods.addDiaryEntry(_userId, _diaryController.text);
       _diaryController.clear();
       await _fetchDiaryEntries(); // Refresh the diary entries
     } catch (e) {
@@ -57,7 +60,7 @@ class _DiaryPageState extends State<DiaryPage> {
   }
 
   Future<void> _fetchDiaryEntries() async {
-    final entries = await FirestoreMethods.fetchDiaryEntries();
+    final entries = await FirestoreMethods.fetchDiaryEntries(_userId);
     setState(() {
       _diaryEntries = entries;
     });

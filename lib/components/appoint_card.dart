@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mental_wellness/screens/completed.dart';
 
 import '../utils/config.dart';
 
@@ -78,7 +79,13 @@ class _AppointCardState extends State<AppointCard> {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.green),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CompletedPage(),
+                              ));
+                        },
                         child: Text(
                           'Completed',
                           style: TextStyle(color: Colors.white),
