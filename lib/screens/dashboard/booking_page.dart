@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mental_wellness/screens/dashboard/appointment.dart';
+import 'package:mental_wellness/screens/success_booked.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../components/button.dart';
@@ -125,7 +126,7 @@ class _BookingPageState extends State<BookingPage> {
                 onPress: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) {
-                      return AppointmentPage();
+                      return AppointmentBooked();
                     },
                   ));
                 },

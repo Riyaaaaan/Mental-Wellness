@@ -66,7 +66,9 @@ class _AppointCardState extends State<AppointCard> {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         child: Text(
                           'Cancel',
                           style: TextStyle(color: Colors.white),

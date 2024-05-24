@@ -63,21 +63,21 @@ class HomePage extends StatelessWidget {
                 AppointCard(),
                 Config.spaceSmall,
                 Text(
-                  "Top Doctors",
+                  "Previous appointments",
                   style: TextStyle(
                     fontSize: Config.widthSize! * 0.04,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Config.spaceSmall,
-                Column(
-                  children: List.generate(
-                    5,
-                    (index) => const DoctorCard(
-                      route: 'doc_details',
-                    ),
-                  ),
-                )
+                // Column(
+                //   children: List.generate(
+                //     5,
+                //     (index) => const DoctorCard(
+                //       route: 'doc_details',
+                //     ),
+                //   ),
+                // )
               ],
             ),
           ),

@@ -7,7 +7,7 @@
 
 
     <application
-        android:label="mental_wellness"
+        android:label="Happify"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

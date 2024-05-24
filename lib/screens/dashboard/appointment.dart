@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mental_wellness/screens/dashboard/booking_page.dart';
+import 'package:mental_wellness/screens/dashboard/dash_board.dart';
 import 'package:mental_wellness/screens/success_booked.dart';
 
 import '../../utils/config.dart';
@@ -185,7 +187,11 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             children: [
                               Expanded(
                                   child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => DashBoardPage(),
+                                  ));
+                                },
                                 child: const Text(
                                   'Cancel',
                                   style: TextStyle(color: Config.primaryColor),
@@ -202,7 +208,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return const AppointmentBooked();
+                                        return const BookingPage();
                                       },
                                     ),
                                   );
